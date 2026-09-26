@@ -19,11 +19,11 @@ class DifferentiationSection extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.symmetric(
         horizontal: isDesktop ? AppSpacing.xxxl : AppSpacing.lg,
-        vertical: isDesktop ? 80.0 : 48.0,
+        vertical: isDesktop ? 88.0 : 56.0,
       ),
       child: Center(
         child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 960),
+          constraints: const BoxConstraints(maxWidth: 1040),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -38,7 +38,7 @@ class DifferentiationSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4.0),
                 ),
                 child: const Text(
-                  'WHY VYAAPAARPILOT',
+                  'WHY VYAPAARPILOT',
                   style: TextStyle(
                     fontSize: 11.0,
                     fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class DifferentiationSection extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.sm),
 
-              // Headline
+              // Headline (preserving tested string "Don't give merchants another dashboard.")
               Text(
                 "Don't give merchants another dashboard.\nGive them a growth loop.",
                 textAlign: TextAlign.center,
@@ -59,6 +59,20 @@ class DifferentiationSection extends StatelessWidget {
                   color: AppColors.textPrimary,
                   height: 1.25,
                   letterSpacing: -0.5,
+                ),
+              ),
+              const SizedBox(height: 12.0),
+
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 680),
+                child: const Text(
+                  'Traditional tools stop at reporting what happened yesterday. VyapaarPilot connects the full commercial chain from raw transaction data to measurable business recovery.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: AppColors.textSecondary,
+                    height: 1.5,
+                  ),
                 ),
               ),
               const SizedBox(height: 48.0),
@@ -82,54 +96,114 @@ class DifferentiationSection extends StatelessWidget {
                   ],
                 ),
 
-              const SizedBox(height: 56.0),
+              const SizedBox(height: 64.0),
 
-              // Final Conversion Call-To-Action
-              ElevatedButton(
-                key: const Key('landing_open_app_button'),
-                onPressed: () {
-                  Navigator.pushNamed(context, AppRouter.dashboard);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: isDesktop ? 32.0 : 16.0,
-                    vertical: isDesktop ? 18.0 : 14.0,
-                  ),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: AppRadius.roundedSmall,
-                  ),
-                  elevation: 0,
+              // Final Conversion Call-To-Action Banner
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(
+                  horizontal: isDesktop ? 48.0 : AppSpacing.lg,
+                  vertical: isDesktop ? 48.0 : 28.0,
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [
+                      AppColors.deepNavy,
+                      AppColors.primary,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: AppRadius.roundedLarge,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withValues(alpha: 0.2),
+                      blurRadius: 30,
+                      offset: const Offset(0, 10),
+                    ),
+                  ],
+                ),
+                child: Column(
                   children: [
-                    Flexible(
-                      child: Text(
-                        'Open VyapaarPilot',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                    Text(
+                      'Stop looking at your business data.\nStart talking to it.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: isDesktop ? 32.0 : 22.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        height: 1.25,
+                        letterSpacing: -0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 12.0),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 580),
+                      child: const Text(
+                        'Get clearer answers, discover hidden opportunities, and decide what to do next — in plain language.',
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: isDesktop ? 16.0 : 14.0,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 14.0,
+                          color: Color(0xFFBAC7D5),
+                          height: 1.5,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8.0),
-                    const Icon(Icons.arrow_forward_rounded, size: 18.0),
+                    const SizedBox(height: AppSpacing.xl),
+                    Wrap(
+                      spacing: AppSpacing.md,
+                      runSpacing: AppSpacing.sm,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          key: const Key('landing_open_app_button'),
+                          onPressed: () {
+                            Navigator.pushNamed(context, AppRouter.dashboard);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.paymentBlue,
+                            foregroundColor: AppColors.deepNavy,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isDesktop ? 32.0 : 16.0,
+                              vertical: isDesktop ? 18.0 : 12.0,
+                            ),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: AppRadius.roundedSmall,
+                            ),
+                            elevation: 0,
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Flexible(
+                                child: Text(
+                                  'Open VyapaarPilot',
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontSize: isDesktop ? 15.0 : 13.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 8.0),
+                              const Icon(Icons.arrow_forward_rounded, size: 16.0),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppSpacing.lg),
+                    const Text(
+                      'Hack-e-Awadh 2026 • PS-02 Merchant Growth AI',
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white54,
+                        letterSpacing: 0.3,
+                      ),
+                    ),
                   ],
-                ),
-              ),
-              const SizedBox(height: AppSpacing.md),
-
-              const Text(
-                'Hack-e-Awadh • PS-02 Merchant Growth AI',
-                style: TextStyle(
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.textSecondary,
-                  letterSpacing: 0.2,
                 ),
               ),
             ],
@@ -141,7 +215,7 @@ class DifferentiationSection extends StatelessWidget {
 
   Widget _buildTraditionalCard() {
     return Container(
-      padding: const EdgeInsets.all(AppSpacing.xl),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: AppColors.background,
         borderRadius: AppRadius.roundedMedium,
@@ -150,13 +224,42 @@ class DifferentiationSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'TRADITIONAL ANALYTICS',
-            style: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 0.5,
-              color: AppColors.textSecondary,
+          Row(
+            children: [
+              Container(
+                width: 28,
+                height: 28,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
+                child: const Icon(Icons.bar_chart_rounded, size: 16, color: AppColors.textSecondary),
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              const Flexible(
+                child: Text(
+                  'TRADITIONAL ANALYTICS',
+                  style: TextStyle(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 0.5,
+                    color: AppColors.textSecondary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12.0),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+              border: Border.all(color: AppColors.border),
+            ),
+            child: const Text(
+              'Workflow: Numbers → Merchant (passive charts)',
+              style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.w600, color: AppColors.textSecondary),
             ),
           ),
           const SizedBox(height: AppSpacing.md),
@@ -169,7 +272,7 @@ class DifferentiationSection extends StatelessWidget {
           _buildRow('Did it work?', false, isDimmed: true),
           const SizedBox(height: AppSpacing.lg),
           const Text(
-            'Leaves the merchant with charts but no direction.',
+            'Leaves the merchant with complex charts but no actionable direction.',
             style: TextStyle(
               fontSize: 12.0,
               color: AppColors.textSecondary,
@@ -183,7 +286,7 @@ class DifferentiationSection extends StatelessWidget {
 
   Widget _buildVyapaarPilotCard() {
     return Container(
-      padding: const EdgeInsets.all(AppSpacing.xl),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: AppRadius.roundedMedium,
@@ -202,17 +305,27 @@ class DifferentiationSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8.0,
+            runSpacing: 4.0,
             children: [
-              const Text(
-                'VYAAPAARPILOT',
-                style: TextStyle(
-                  fontSize: 12.0,
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 0.5,
-                  color: AppColors.secondaryBlue,
-                ),
+              const Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(Icons.auto_awesome, size: 16, color: AppColors.secondaryBlue),
+                  SizedBox(width: 6),
+                  Text(
+                    'VYAPAARPILOT',
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 0.5,
+                      color: AppColors.secondaryBlue,
+                    ),
+                  ),
+                ],
               ),
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -233,6 +346,18 @@ class DifferentiationSection extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+          const SizedBox(height: 12.0),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            decoration: BoxDecoration(
+              color: AppColors.lightBlue,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: const Text(
+              'Data → Understanding → Insight → Recommendation → Action',
+              style: TextStyle(fontSize: 11.0, fontWeight: FontWeight.bold, color: AppColors.primary),
+            ),
           ),
           const SizedBox(height: AppSpacing.md),
           _buildRow('What happened?', true, isHighlight: true),

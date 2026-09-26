@@ -90,6 +90,46 @@ class VoiceAgentSection extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: AppSpacing.md),
+
+              // Multimodal interaction banner
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF132F4C),
+                  borderRadius: BorderRadius.circular(30.0),
+                  border: Border.all(color: const Color(0xFF1E4976)),
+                ),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  spacing: 12.0,
+                  runSpacing: 6.0,
+                  children: [
+                    const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.keyboard_outlined, color: Colors.white70, size: 16),
+                        SizedBox(width: 6),
+                        Text('Type it.', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
+                      ],
+                    ),
+                    Text('OR', style: TextStyle(color: AppColors.paymentBlue.withValues(alpha: 0.9), fontWeight: FontWeight.bold, fontSize: 11)),
+                    const Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.mic, color: AppColors.paymentBlue, size: 16),
+                        SizedBox(width: 6),
+                        Text('Say it.', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13)),
+                      ],
+                    ),
+                    const Icon(Icons.arrow_forward_rounded, color: Colors.white38, size: 14),
+                    const Text('Get the same intelligent answer.', style: TextStyle(color: Color(0xFFBAC7D5), fontSize: 13, fontWeight: FontWeight.w500)),
+                  ],
+                ),
+              ),
+
               const SizedBox(height: AppSpacing.xl),
 
               // Voice Waveform Graphic

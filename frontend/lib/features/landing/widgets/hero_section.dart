@@ -5,8 +5,10 @@ import '../../../core/constants/app_constants.dart';
 import '../../../core/routing/app_router.dart';
 import 'landing_vectors.dart';
 
-/// Asymmetric Hero Section for VyapaarPilot.
-/// Combines punchy fintech value proposition with a high-fidelity live product composition.
+/// Hero Section for VyapaarPilot.
+/// Highlights the core value proposition and provides a grounded, realistic product composition
+/// showing merchant question ("Meri Tuesday evening sales kyun gir rahi hain?"), grounded insight,
+/// comparative baseline chart, and human-confirmed recommended action.
 class HeroSection extends StatelessWidget {
   final VoidCallback onHowItWorksTap;
 
@@ -53,7 +55,7 @@ class HeroSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildLeftHeroContent(context, false),
-                    const SizedBox(height: 40.0),
+                    const SizedBox(height: 48.0),
                     _buildRightProductComposition(context, false),
                   ],
                 ),
@@ -129,7 +131,7 @@ class HeroSection extends StatelessWidget {
 
         // Supporting copy
         Text(
-          'VyapaarPilot turns everyday transaction patterns into clear opportunities, testable actions and measurable outcomes — in the language a merchant actually uses.',
+          'Your business data has answers. VyapaarPilot helps you act on them. Ask about your sales, customers, or opportunities in plain language — and get actionable insights and testable experiments backed by your business data.',
           style: TextStyle(
             fontSize: isDesktop ? 16.0 : 14.0,
             color: AppColors.textSecondary,
@@ -152,8 +154,8 @@ class HeroSection extends StatelessWidget {
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(
-                  horizontal: isDesktop ? 24.0 : 16.0,
-                  vertical: isDesktop ? 16.0 : 12.0,
+                  horizontal: isDesktop ? 24.0 : 18.0,
+                  vertical: isDesktop ? 16.0 : 13.0,
                 ),
                 shape: const RoundedRectangleBorder(
                   borderRadius: AppRadius.roundedSmall,
@@ -187,8 +189,8 @@ class HeroSection extends StatelessWidget {
                 side: const BorderSide(color: AppColors.border, width: 1.5),
                 backgroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(
-                  horizontal: isDesktop ? 20.0 : 14.0,
-                  vertical: isDesktop ? 16.0 : 12.0,
+                  horizontal: isDesktop ? 20.0 : 16.0,
+                  vertical: isDesktop ? 16.0 : 13.0,
                 ),
                 shape: const RoundedRectangleBorder(
                   borderRadius: AppRadius.roundedSmall,
@@ -248,293 +250,23 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildRightProductComposition(BuildContext context, bool isDesktop) {
-    return Stack(
-      clipBehavior: Clip.none,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Main Merchant Sales Overview Card
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(AppSpacing.xl),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: AppRadius.roundedLarge,
-            border: Border.all(color: AppColors.border),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.primary.withValues(alpha: 0.06),
-                blurRadius: 24,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Store Header
-              Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: AppSpacing.sm,
-                runSpacing: AppSpacing.xs,
-                children: [
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 280),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 38,
-                          height: 38,
-                          decoration: BoxDecoration(
-                            color: AppColors.lightBlue,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                          child: const Icon(
-                            Icons.storefront,
-                            color: AppColors.primary,
-                            size: 20,
-                          ),
-                        ),
-                        const SizedBox(width: AppSpacing.sm),
-                        const Flexible(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Good morning,',
-                                style: TextStyle(
-                                  fontSize: 11.0,
-                                  color: AppColors.textSecondary,
-                                ),
-                              ),
-                              Text(
-                                'Sharma General Store',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.textPrimary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 4.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.background,
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: const Text(
-                      'Lucknow • Retail',
-                      style: TextStyle(
-                        fontSize: 10.0,
-                        color: AppColors.textSecondary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.lg),
-
-              // Today's Sales Metric
-              Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.end,
-                spacing: AppSpacing.sm,
-                runSpacing: AppSpacing.xs,
-                children: [
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "TODAY'S SALES",
-                        style: TextStyle(
-                          fontSize: 11.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textSecondary,
-                          letterSpacing: 0.5,
-                        ),
-                      ),
-                      SizedBox(height: 2.0),
-                      Text(
-                        '₹18,420',
-                        style: TextStyle(
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                          letterSpacing: -0.5,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8.0,
-                      vertical: 4.0,
-                    ),
-                    decoration: BoxDecoration(
-                      color: AppColors.warningLight,
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: const Text(
-                      '↓ 12% vs usual',
-                      style: TextStyle(
-                        fontSize: 11.0,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.warning,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppSpacing.md),
-              const Divider(color: AppColors.divider, height: 1.0),
-              const SizedBox(height: AppSpacing.md),
-
-              // Transaction stream preview
-              const Wrap(
-                alignment: WrapAlignment.spaceBetween,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 8.0,
-                runSpacing: 4.0,
-                children: [
-                  Text(
-                    '73 Transactions • Avg. ₹252',
-                    style: TextStyle(
-                      fontSize: 12.0,
-                      color: AppColors.textSecondary,
-                    ),
-                  ),
-                  PaymentStreamVector(width: 80, height: 20),
-                ],
-              ),
-            ],
-          ),
-        ),
-
-        // Connected Opportunity Callout Card
-        Positioned(
-          left: isDesktop ? -16.0 : 8.0,
-          bottom: -28.0,
-          right: isDesktop ? 20.0 : 8.0,
+        // 1. Merchant Voice Question Pill
+        Align(
+          alignment: Alignment.centerRight,
           child: Container(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: AppRadius.roundedMedium,
-              border: Border.all(
-                color: AppColors.warning.withValues(alpha: 0.4),
-                width: 1.5,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.warning.withValues(alpha: 0.12),
-                  blurRadius: 16,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 34,
-                  height: 34,
-                  decoration: const BoxDecoration(
-                    color: AppColors.warningLight,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.trending_down_rounded,
-                    color: AppColors.warning,
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: AppSpacing.md),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Wrap(
-                        alignment: WrapAlignment.spaceBetween,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        spacing: 6.0,
-                        runSpacing: 2.0,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 6.0,
-                              vertical: 2.0,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.warningLight,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                            child: const Text(
-                              'OPPORTUNITY DETECTED',
-                              style: TextStyle(
-                                fontSize: 9.0,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.warning,
-                              ),
-                            ),
-                          ),
-                          const Text(
-                            '↓ 24% vs normal',
-                            style: TextStyle(
-                              fontSize: 11.0,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.warning,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 3.0),
-                      const Text(
-                        'Tuesday evening • 4 PM – 7 PM',
-                        style: TextStyle(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
-                      ),
-                      const Text(
-                        'Observed consistently for 4 weeks',
-                        style: TextStyle(
-                          fontSize: 11.0,
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-
-        // Voice Query Floating Pill (Top Right)
-        Positioned(
-          top: -16.0,
-          right: isDesktop ? -12.0 : 8.0,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12.0,
-              vertical: 8.0,
-            ),
+            margin: const EdgeInsets.only(bottom: 12.0, right: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
             decoration: BoxDecoration(
               color: AppColors.primary,
-              borderRadius: BorderRadius.circular(24.0),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+                bottomLeft: Radius.circular(16),
+                bottomRight: Radius.circular(4),
+              ),
               boxShadow: [
                 BoxShadow(
                   color: AppColors.primary.withValues(alpha: 0.25),
@@ -550,11 +282,9 @@ class HeroSection extends StatelessWidget {
                 SizedBox(width: 6.0),
                 Flexible(
                   child: Text(
-                    '"Meri sales mein kya opportunity hai?"',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    '"Meri Tuesday evening sales kyun gir rahi hain?"',
                     style: TextStyle(
-                      fontSize: 11.0,
+                      fontSize: 12.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ),
@@ -562,6 +292,302 @@ class HeroSection extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        ),
+
+        // 2. Main Grounded Copilot Insight Card
+        Container(
+          padding: EdgeInsets.all(isDesktop ? AppSpacing.xl : AppSpacing.md),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: AppRadius.roundedLarge,
+            border: Border.all(color: AppColors.border),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.primary.withValues(alpha: 0.08),
+                blurRadius: 28,
+                offset: const Offset(0, 10),
+              ),
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Store Header & Copilot Badge
+              Wrap(
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 8.0,
+                runSpacing: 8.0,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: AppColors.lightBlue,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: const Icon(
+                          Icons.storefront,
+                          color: AppColors.primary,
+                          size: 20,
+                        ),
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      const Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Sharma General Store',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                                color: AppColors.textPrimary,
+                              ),
+                            ),
+                            Text(
+                              'Lucknow • Retail • Live Analysis',
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 10.0,
+                                color: AppColors.textSecondary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 3.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.warningLight,
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: const Text(
+                      'OPPORTUNITY DETECTED',
+                      style: TextStyle(
+                        fontSize: 9.0,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.warning,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.lg),
+
+              // Insight Headline & Core Finding
+              const Text(
+                'Tuesday 4–7 PM sales are 24% below normal',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                  letterSpacing: -0.3,
+                ),
+              ),
+              const SizedBox(height: 4.0),
+              const Text(
+                'Identified consistently across the last 4 weeks. Normal baseline: ₹13,800 vs Recent average: ₹10,488.',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: AppColors.textSecondary,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+
+              // Mini Visual Chart Comparison
+              Container(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                decoration: BoxDecoration(
+                  color: AppColors.background,
+                  borderRadius: AppRadius.roundedSmall,
+                  border: Border.all(color: AppColors.border),
+                ),
+                child: Column(
+                  children: [
+                    Wrap(
+                      alignment: WrapAlignment.spaceBetween,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8.0,
+                      runSpacing: 4.0,
+                      children: [
+                        const Text(
+                          'Tuesday 4–7 PM Revenue Comparison',
+                          style: TextStyle(
+                            fontSize: 11.0,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6.0,
+                            vertical: 2.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.warningLight,
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          child: const Text(
+                            '-₹3,312 gap',
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.warning,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12.0),
+                    // Comparison Bars
+                    _buildComparisonBar(
+                      label: 'Normal Baseline (Weeks 5-12)',
+                      amount: '₹13,800',
+                      progress: 1.0,
+                      barColor: AppColors.secondaryBlue,
+                    ),
+                    const SizedBox(height: 8.0),
+                    _buildComparisonBar(
+                      label: 'Recent 4-Week Average',
+                      amount: '₹10,488',
+                      progress: 0.76,
+                      barColor: AppColors.warning,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+
+              // Recommended Next Action Card
+              Container(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                decoration: BoxDecoration(
+                  color: AppColors.veryLightBlue,
+                  borderRadius: AppRadius.roundedSmall,
+                  border: Border.all(
+                    color: AppColors.secondaryBlue.withValues(alpha: 0.4),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 32,
+                      height: 32,
+                      decoration: const BoxDecoration(
+                        color: AppColors.secondaryBlue,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.rocket_launch_rounded,
+                        color: Colors.white,
+                        size: 16,
+                      ),
+                    ),
+                    const SizedBox(width: AppSpacing.sm),
+                    const Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'RECOMMENDED EXPERIMENT',
+                            style: TextStyle(
+                              fontSize: 9.0,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.secondaryBlue,
+                            ),
+                          ),
+                          Text(
+                            'Run a 10% Snack & Tea Combo discount next Tuesday (4–7 PM)',
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: AppColors.successLight,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text(
+                        '+25% uplift',
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.success,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildComparisonBar({
+    required String label,
+    required String amount,
+    required double progress,
+    required Color barColor,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Text(
+                label,
+                style: const TextStyle(
+                  fontSize: 10.0,
+                  color: AppColors.textSecondary,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8.0),
+            Text(
+              amount,
+              style: TextStyle(
+                fontSize: 11.0,
+                fontWeight: FontWeight.bold,
+                color: barColor,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4.0),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(4.0),
+          child: LinearProgressIndicator(
+            value: progress,
+            backgroundColor: AppColors.divider,
+            valueColor: AlwaysStoppedAnimation<Color>(barColor),
+            minHeight: 6.0,
           ),
         ),
       ],

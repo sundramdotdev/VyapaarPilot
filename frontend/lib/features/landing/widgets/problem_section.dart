@@ -4,8 +4,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_constants.dart';
 import 'landing_vectors.dart';
 
-/// Section 3: The Problem.
-/// Demonstrates the gap between raw payment history and actionable business intelligence.
+/// Section 3: The Problem
+/// Demonstrates the real gap: Running a shop takes enough time — understanding the numbers shouldn't require a data analyst.
 class ProblemSection extends StatelessWidget {
   const ProblemSection({super.key});
 
@@ -19,7 +19,7 @@ class ProblemSection extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.symmetric(
         horizontal: isDesktop ? AppSpacing.xxxl : AppSpacing.lg,
-        vertical: isDesktop ? 72.0 : 48.0,
+        vertical: isDesktop ? 88.0 : 56.0,
       ),
       child: Center(
         child: ConstrainedBox(
@@ -51,21 +51,35 @@ class ProblemSection extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.sm),
 
-              // Headline
+              // Headline (preserving tested string 'Payments tell merchants what happened.')
               Text(
-                'Payments tell merchants what happened.\nNot what to do next.',
+                'Running a shop takes enough time.\nPayments tell merchants what happened. Not what to do next.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: isDesktop ? 32.0 : 24.0,
+                  fontSize: isDesktop ? 32.0 : 23.0,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textPrimary,
                   height: 1.25,
                   letterSpacing: -0.5,
                 ),
               ),
-              const SizedBox(height: AppSpacing.xxl),
+              const SizedBox(height: AppSpacing.sm),
 
-              // Side-by-side or stacked comparison
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 720),
+                child: const Text(
+                  'Understanding your numbers shouldn\'t require a data analyst. Today, crucial patterns stay buried in transaction histories, and traditional dashboards just show numbers without explaining what to do tomorrow.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: AppColors.textSecondary,
+                    height: 1.5,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 48.0),
+
+              // Side-by-side or stacked comparison (Merchants Have Today vs Merchants Still Need)
               if (isDesktop)
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,45 +119,86 @@ class ProblemSection extends StatelessWidget {
                   ],
                 ),
 
-              const SizedBox(height: AppSpacing.xxl),
+              const SizedBox(height: 40.0),
 
-              // Core Message summary banner
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.lg,
-                  vertical: AppSpacing.md,
-                ),
-                decoration: BoxDecoration(
-                  color: AppColors.veryLightBlue,
-                  borderRadius: AppRadius.roundedMedium,
-                  border: Border.all(color: AppColors.lightBlue),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(
-                      Icons.lightbulb_outline_rounded,
-                      color: AppColors.secondaryBlue,
-                      size: 20,
-                    ),
-                    const SizedBox(width: AppSpacing.sm),
-                    Flexible(
-                      child: Text(
-                        'Small merchants generate valuable business signals every day but lack an analyst, marketer or finance team to turn those signals into action.',
-                        style: TextStyle(
-                          fontSize: isDesktop ? 14.0 : 13.0,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.primary,
-                          height: 1.4,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              // 4 Key Friction Points in Grid
+              Wrap(
+                spacing: AppSpacing.lg,
+                runSpacing: AppSpacing.md,
+                alignment: WrapAlignment.center,
+                children: [
+                  _buildFrictionPoint(
+                    icon: Icons.table_chart_outlined,
+                    title: 'Buried in Ledger Logs',
+                    desc: 'Patterns are hidden across hundreds of daily micro-payments.',
+                  ),
+                  _buildFrictionPoint(
+                    icon: Icons.help_outline_rounded,
+                    title: 'What vs Why',
+                    desc: 'Merchants see lower daily sales, but don\'t know which hours caused it.',
+                  ),
+                  _buildFrictionPoint(
+                    icon: Icons.radar_rounded,
+                    title: 'Missed Opportunities',
+                    desc: 'Recurring Tuesday or evening slowdowns go unnoticed for months.',
+                  ),
+                  _buildFrictionPoint(
+                    icon: Icons.call_missed_outgoing_rounded,
+                    title: 'No Actionable Next Step',
+                    desc: 'Traditional charts end at graphs. Merchants need concrete experiments.',
+                  ),
+                ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildFrictionPoint({
+    required IconData icon,
+    required String title,
+    required String desc,
+  }) {
+    return Container(
+      width: 250,
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: AppColors.background,
+        borderRadius: AppRadius.roundedSmall,
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 18, color: AppColors.secondaryBlue),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: 2.0),
+                Text(
+                  desc,
+                  style: const TextStyle(
+                    fontSize: 11.0,
+                    color: AppColors.textSecondary,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
